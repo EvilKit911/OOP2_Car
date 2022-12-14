@@ -1,6 +1,80 @@
 package transport;
 
+import java.time.LocalDate;
+
 public class Car {
+
+    public static class Key {
+
+        private final boolean RemoteEngineStart;
+        private final boolean KeylessAccess;
+
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            RemoteEngineStart = remoteEngineStart;
+            KeylessAccess = keylessAccess;
+        }
+
+        public boolean getRemoteEngineStart() {
+            return RemoteEngineStart;
+        }
+
+        public boolean getKeylessAccess() {
+            return KeylessAccess;
+        }
+    }
+
+        public static class Insurance{
+
+            private final LocalDate expireDate;
+            private final int cost;
+            private final String numberIsurance;
+
+            public LocalDate getExpireDate() {
+                return expireDate;
+            }
+
+            public int getCost() {
+                return cost;
+            }
+
+            public String getNumberIsurance() {
+                return numberIsurance;
+            }
+
+            public Insurance(LocalDate expireDate, int cost, String numberIsurance) {
+                if (expireDate == null) {
+                    expireDate = LocalDate.now().plusDays(365);
+                }
+                this.expireDate = expireDate;
+                if (cost <= 0) {
+                    cost = 7000;
+                }
+                this.cost = cost;
+                if (numberIsurance == null || numberIsurance.isEmpty()) {
+                    numberIsurance = "XXXXXXXXX";
+                }
+                this.numberIsurance = numberIsurance;
+
+            }
+            public void printInsurance() {
+                boolean expired = expireDate.isAfter(LocalDate.now());
+                if (expired) {
+                    System.out.println("Пора обновить страховку");
+                }
+
+            }
+            public void printTryNumber() {
+                boolean correct = numberIsurance.length() == 9;
+                if (!correct) {
+                    System.out.println("Номер страховки некорректный!");
+                }
+                }
+            }
+
+
+
+
+
     private final String brand;
     private final String model;
     private double engineVolume;
@@ -13,6 +87,10 @@ public class Car {
     private int nuberOfSeats;
     private boolean summerTyres;
 
+    private Key key;
+
+    private Insurance insurance;
+
 
     public Car(String brand,
         String model,
@@ -21,7 +99,8 @@ public class Car {
         int year,
         String country,
         String typeBody,
-        String registrationNumber) {
+        String registrationNumber
+               ) {
 
         if (brand == null|| brand.isEmpty()) {
             brand = "Default";
@@ -52,6 +131,30 @@ public class Car {
             registrationNumber = "x000xx000x";
         }
         this.registrationNumber = registrationNumber;
+        setKey(null);
+        setInsurance(null);
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false,false);
+        }
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        if (insurance == null) {
+            insurance = new Insurance(null,7000,null);
+        }
+        this.insurance = insurance;
     }
 
     public String getBrand() {
@@ -159,6 +262,11 @@ public class Car {
                 ", Регистрационный номер " + registrationNumber +
                 ", Количество мест " + nuberOfSeats +
                 ", Тип шин " + summerTyres +
+                ", Ключ: удалённый запуск " + key.RemoteEngineStart +
+                ", бесключевой доступ " + key.KeylessAccess +
+                ", Страховка: стоимость  " + insurance.cost+
+                ", номер " + insurance.numberIsurance +
+                ", срок действия " + insurance.expireDate+
                 '}';
 
     }

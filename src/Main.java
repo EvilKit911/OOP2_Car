@@ -11,6 +11,9 @@ lada.setGearBox("Мкпп");audi.setGearBox("Мкпп");bmw.setGearBox("Акпп
 lada.setNuberOfSeats(0);audi.setNuberOfSeats(0);bmw.setNuberOfSeats(0);kia.setNuberOfSeats(0);hyndai.setNuberOfSeats(0);
     kia.changeTyres();
 
+
+
+
         System.out.println(lada);
         System.out.println(audi);
         System.out.println(bmw);
