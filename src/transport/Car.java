@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
+public class Car extends Transport {
 
     public static class Key {
 
@@ -75,12 +75,9 @@ public class Car {
 
 
 
-    private final String brand;
-    private final String model;
+
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
+
     private String gearBox;
     private final String typeBody;
     private final String registrationNumber;
@@ -98,35 +95,21 @@ public class Car {
         String color,
         int year,
         String country,
-        String typeBody,
-        String registrationNumber
+               String typeBody,
+               String registrationNumber,
+               int maximumSpeed
                ) {
 
-        if (brand == null|| brand.isEmpty()) {
-            brand = "Default";
-        }
-        this.brand = brand;
-        if (model == null|| model.isEmpty()) {
-            model = "Default";
-        }
-        this.model = model;
-        if (country == null|| country.isEmpty()) {
-            country = "Default";
-        }
-        this.country = country;
+        super(brand, model, year, country, color, maximumSpeed );
+
         setEngineVolume(engineVolume);
-        if (this.color == null|| this.color.isEmpty()) {
-            this.color = "Белый";
-        }
-        this.color = color;
-        if (year <= 0) {
-            year = 2000;
-        }
-        this.year = year;
+
+
         if (typeBody == null|| typeBody.isEmpty()) {
             typeBody = "Default";
         }
         this.typeBody = typeBody;
+
         if (registrationNumber == null|| registrationNumber.isEmpty()) {
             registrationNumber = "x000xx000x";
         }
@@ -157,21 +140,7 @@ public class Car {
         this.insurance = insurance;
     }
 
-    public String getBrand() {
-        return brand;
-    }
 
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public String getTypeBody() {
         return typeBody;
@@ -192,13 +161,7 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public String getGearBox() {
         return gearBox;
@@ -251,15 +214,15 @@ public class Car {
     @Override
     public String toString() {
         return "Машина: " +
-                "Марка " + brand +
-                ",Модель " + model +
+                "Марка " + getBrand() +
+                ",Модель " + getModel() +
                 ", Обьём двигателя = " + engineVolume +
-                ", Цвет " + color  +
-                ", Год выпуска=" + year +
-                ", Страна производства " + country +
+                ", Цвет " + getColor()  +
+                ", Год выпуска=" + getYear() +
+                ", Страна производства " + getCountry() +
                 ", Коробка передач " + gearBox +
                 ", Тип кузова " + typeBody +
-                ", Регистрационный номер " + registrationNumber +
+                ", Регистрационный номер " + getRegistrationNumber() +
                 ", Количество мест " + nuberOfSeats +
                 ", Тип шин " + summerTyres +
                 ", Ключ: удалённый запуск " + key.RemoteEngineStart +
@@ -267,6 +230,7 @@ public class Car {
                 ", Страховка: стоимость  " + insurance.cost+
                 ", номер " + insurance.numberIsurance +
                 ", срок действия " + insurance.expireDate+
+                ", максимальная скорость " + maximumSpeed +
                 '}';
 
     }
