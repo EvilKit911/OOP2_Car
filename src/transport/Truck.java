@@ -2,9 +2,26 @@ package transport;
 
 public class Truck extends Transport implements Competing {
 
+    private LoadCopasity loadCopasity;
+
 
     public Truck(String brand, String model, int maximumSpeed, double engineVolume) {
         super(brand, model, maximumSpeed, engineVolume);
+    }
+
+    public Truck(String brand, String model, int maximumSpeed, double engineVolume, LoadCopasity loadCopasity) {
+        super(brand, model, maximumSpeed, engineVolume);
+        this.loadCopasity = loadCopasity;
+    }
+
+    public LoadCopasity getLoadCopasity()
+    {
+        if (loadCopasity == null) {
+            loadCopasity = LoadCopasity.NODATA;
+            return loadCopasity;
+        }else{
+            return loadCopasity;
+        }
     }
 
     @Override
@@ -22,7 +39,8 @@ public class Truck extends Transport implements Competing {
                 "Марка " + getBrand() +
                 ",Модель " + getModel() +
                 ", Максимальная скорость " + getMaximumSpeed() +
-                ", Обьём двигателя " + getEngineVolume();
+                ", Обьём двигателя " + getEngineVolume() +
+                ", Класс грузоподьёмности " + getLoadCopasity();
     }
 
     @Override

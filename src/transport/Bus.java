@@ -3,8 +3,16 @@ package transport;
 public class Bus extends Transport implements Competing {
 
 
+    private Size size;
+
+
     public Bus(String brand, String model, int maximumSpeed, double engineVolume) {
         super(brand, model, maximumSpeed, engineVolume);
+    }
+
+    public Bus(String brand, String model, int maximumSpeed, double engineVolume, Size size) {
+        super(brand, model, maximumSpeed, engineVolume);
+        this.size = size;
     }
 
     @Override
@@ -23,7 +31,17 @@ public class Bus extends Transport implements Competing {
                 "Марка " + getBrand() +
                 ",Модель " + getModel() +
                 ", Максимальная скорость " + getMaximumSpeed() +
-                ", Обьём двигателя " + getEngineVolume();
+                ", Обьём двигателя " + getEngineVolume() +
+                ", Количество мест " + getSize();
+    }
+
+    public Size getSize() {
+        if (size == null) {
+            size = Size.NODATA;
+            return size;
+        } else {
+            return size;
+        }
     }
 
     @Override
