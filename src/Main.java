@@ -1,7 +1,7 @@
 import transport.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoLicenseExeption {
         Car lada = new Car("Lada","Granta",120 ,1.7,BodyType.HATCHBACK);
         Car audi = new Car("Audi","A8 50 L TDI quattro",180,3);
         Car bmw = new Car("BMW","Z8",180,3);
@@ -34,9 +34,9 @@ public class Main {
         System.out.println(scania);
         System.out.println(" ");
 
-        DriverB nikita = new DriverB("Никита", true,1 );
-        DriverC artem = new DriverC("Артем",true,4);
-        DriverD alexandr = new DriverD("Александр",true,12);
+        DriverB nikita = new DriverB("Никита", true,1,"B");
+        DriverC artem = new DriverC("Артем",true,4,"C");
+        DriverD alexandr = new DriverD("Александр",true,12,"D");
 
 //        nikita.startMove(audi);
 //        nikita.refuel(audi);
@@ -52,5 +52,9 @@ public class Main {
 //        alexandr.refuel(paz);
 //        alexandr.stopMove(paz);
 //        alexandr.printInfo(paz);
+
+        daf.passDiagnostics();
+        lada.passDiagnostics();
+        paz.passDiagnostics();
     }
 }

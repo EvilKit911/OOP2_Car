@@ -2,13 +2,15 @@ package transport;
 
 public abstract class Driver<T extends Transport> {
     private final String name;
+    private final String licensType;
     private boolean presenceDriversLicense;
     private int experience;
 
-    public Driver(String name, boolean presenceDriversLicense, int experience) {
+    public Driver(String name, boolean presenceDriversLicense, int experience, String licensType) throws NoLicenseExeption {
         this.name = name;
-        this.presenceDriversLicense = presenceDriversLicense;
+        this.presenceDriversLicense = validateLicense( presenceDriversLicense);
         this.experience = experience;
+        this.licensType = licensType;
     }
 
     public String getName() {
@@ -22,6 +24,14 @@ public abstract class Driver<T extends Transport> {
     public void setPresenceDriversLicense(boolean presenceDriversLicense) {
         this.presenceDriversLicense = presenceDriversLicense;
     }
+
+    public static Boolean validateLicense(Boolean value) throws NoLicenseExeption { // если наличие прав false
+        if (value == null || !value) {
+            throw new NoLicenseExeption("у водителя нет ВУ");// то
+        }
+        return value;
+    }
+
 
     public int getExperience() {
         return experience;

@@ -1,8 +1,11 @@
 package transport;
 
 public class DriverC extends Driver<Truck>{
-    public DriverC(String name, boolean presenceDriversLicense, int experience) {
-        super(name, presenceDriversLicense, experience);
+    public DriverC(String name, boolean presenceDriversLicense, int experience, String licensType) throws NoLicenseExeption {
+        super(name, presenceDriversLicense, experience, licensType);
+        if (licensType == null || !licensType.equals("C")) {
+            throw new NoLicenseExeption("Не указан тип ВУ, или указан не верно !!!");
+        }
     }
 
     @Override

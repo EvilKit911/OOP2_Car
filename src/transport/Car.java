@@ -48,6 +48,11 @@ public class Car extends Transport implements Competing {
         }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("Автомобиль "+ getBrand() + " "+ getModel() + " прошёл диагностику");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Автомобиль "+ getBrand() + " "+ getModel() + " заехал на питстоп");
         System.out.println("Автомобиль " + getBrand() + " "+ getModel() + " заправил Автомобиль");

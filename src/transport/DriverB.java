@@ -1,9 +1,13 @@
 package transport;
 
 public class DriverB extends Driver<Car>{
-    public DriverB(String name, boolean presenceDriversLicense, int experience) {
-        super(name, presenceDriversLicense, experience);
+    public DriverB(String name, boolean presenceDriversLicense, int experience, String licensType) throws NoLicenseExeption {
+        super(name, presenceDriversLicense, experience, licensType);
+        if (licensType == null || !licensType.equals("B")) {
+            throw new NoLicenseExeption("Не указан тип ВУ, или указан не верно !!!");
+        }
     }
+
 
     @Override
     public void startMove(Car transport) {

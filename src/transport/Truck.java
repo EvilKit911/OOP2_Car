@@ -25,6 +25,11 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("Тягач " + getBrand() + " " + getModel() + " Прошел диагностику" );
+    }
+
+    @Override
     public void driveStart() {
         System.out.println("Тягач " + getBrand() + " " + getModel() + " Начал движение" );
     }

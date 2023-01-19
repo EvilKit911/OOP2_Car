@@ -67,6 +67,8 @@ package transport;
         public abstract void driveStart();
 
         public abstract void driveStop();
+
+        public abstract void passDiagnostics();
     }
 
 
