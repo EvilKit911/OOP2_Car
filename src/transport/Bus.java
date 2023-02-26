@@ -21,6 +21,16 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    public void repairTransport() {
+        double a = Math.random();
+        if (a <= 0.50) {
+            System.out.println("Автобус " + getBrand() + " " + getModel() + " отремонтировал " + bus);
+        } else if(a >= 0.50) {
+            System.out.println("Автобус " + getBrand() + " " + getModel() + " отремонтировал " + busTwo);
+        }
+    }
+
+    @Override
     public void driveStart() {
         System.out.println("Автобус " + getBrand() + " " + getModel() + " Начал движение" );
     }

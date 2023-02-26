@@ -26,7 +26,22 @@ public class Truck extends Transport implements Competing {
 
     @Override
     public void passDiagnostics() {
-        System.out.println("Тягач " + getBrand() + " " + getModel() + " Прошел диагностику" );
+        double b = Math.random();
+        if (b <= 0.50) {
+            System.out.println("Тягачу " + getBrand() + " " + getModel() + " провёл диагностику " + truck);
+        } else if(b >= 0.50) {
+            System.out.println("Тягачу " + getBrand() + " " + getModel() + " провёл диагностику " + truckTwo);
+        }
+    }
+
+    @Override
+    public void repairTransport() {
+        double a = Math.random();
+        if (a <= 0.50) {
+            System.out.println("Тягач " + getBrand() + " " + getModel() + " отремонтировал " + truck);
+        } else if(a >= 0.50) {
+            System.out.println("Тягач " + getBrand() + " " + getModel() + " отремонтировал " + truckTwo);
+        }
     }
 
     @Override

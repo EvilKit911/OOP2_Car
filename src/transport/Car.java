@@ -8,6 +8,7 @@ public class Car extends Transport implements Competing {
         super(brand, model, maximumSpeed, engineVolume);
     }
 
+
     public Car(String brand, String model, int maximumSpeed, double engineVolume, BodyType bodyType) {
         super(brand, model, maximumSpeed, engineVolume);
         this.bodyType = bodyType;
@@ -49,7 +50,22 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void passDiagnostics() {
-        System.out.println("Автомобиль "+ getBrand() + " "+ getModel() + " прошёл диагностику");
+        double b = Math.random();
+        if (b <= 0.50) {
+            System.out.println("Автомобилю " + getBrand() + " " + getModel() + " провёл диагностику " + auto);
+        } else if(b >= 0.50) {
+            System.out.println("Автомобилю " + getBrand() + " " + getModel() + " провёл диагностику " + autoTwo);
+        }
+    }
+
+    @Override
+    public void repairTransport() {
+        double a = Math.random();
+        if (a <= 0.50) {
+            System.out.println("Автомобиль " + getBrand() + " " + getModel() + " отремонтировал " + auto);
+        } else if(a >= 0.50) {
+            System.out.println("Автомобиль " + getBrand() + " " + getModel() + " отремонтировал " + autoTwo);
+        }
     }
 
     @Override

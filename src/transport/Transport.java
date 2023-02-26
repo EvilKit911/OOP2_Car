@@ -1,6 +1,8 @@
 package transport;
 
-    public abstract class Transport {
+import java.util.ArrayList;
+
+public abstract class Transport {
 
         private final String brand;
         private final String model;
@@ -30,9 +32,23 @@ package transport;
             } else {
                 this.model = model;
             }
+            participantsRace = new ArrayList<>(60); // размечаем лист участников гоники
         }
 
-        public double getEngineVolume() {
+    public ArrayList<Transport> getParticipantsRace() {
+        return participantsRace;
+    }
+
+    public void checkRaceList() {
+        for (int i = 0; i < participantsRace.size(); i++ ) {
+            String j = String.valueOf(participantsRace.get(i));
+
+            System.out.println("Участвует в заезде : " + j);
+
+        }
+    }
+
+    public double getEngineVolume() {
             return engineVolume;
         }
 
@@ -63,12 +79,33 @@ package transport;
             }
         }
 
+        ArrayList<Transport> participantsRace; // создаем лист
+
+
+
 
         public abstract void driveStart();
 
         public abstract void driveStop();
 
         public abstract void passDiagnostics();
+
+        public abstract void repairTransport();
+
+
+
+    Mechanic auto = new Mechanic<Car>("Джон","AutoRepair");
+    Mechanic autoTwo = new Mechanic<Car>("Сергей","AutoRepair");
+
+    Mechanic bus = new Mechanic<Bus>("Костя","BusRepair");
+    Mechanic busTwo = new Mechanic<Bus>("Коля","BusRepair");
+
+    Mechanic truck = new Mechanic<Truck>("Артур","TruckRepair");
+    Mechanic truckTwo = new Mechanic<Truck>("Дмитрий","TruckRepair");
+
+
+
+
     }
 
 
